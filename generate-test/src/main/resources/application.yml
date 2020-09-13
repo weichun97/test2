@@ -1,0 +1,49 @@
+spring:
+  jackson:
+    serialization: { WRITE_DATES_AS_TIMESTAMPS: true }
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.115.21.114:3306/fgoc_cnshe_sys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false
+    username: root
+    password: fgoc-cnshe
+    type: com.alibaba.druid.pool.DruidDataSource
+    validationQuery: SELECT 1
+    initial-size: 20
+    min-idle: 20
+    maxActive: 50
+chun:
+  generate:
+    template-map:
+      po:
+        template-file: po.ftl
+        dir: entity.po
+        suffix: .java
+        type: class
+      mapper:
+        template-file: mapper.ftl
+        dir: mapper
+        suffix: Mapper.java
+        type: class
+      mapper-xml:
+        template-file: mapperXml.ftl
+        dir: mapper
+        suffix: Mapper.xml
+        type: resource
+      maps:
+        template-file: maps.ftl
+        dir: maps
+        suffix: Maps.java
+        type: class
+      service:
+        template-file: service.ftl
+        dir: service
+        suffix: Service.java
+        type: class
+      serviceImpl:
+        template-file: serviceImpl.ftl
+        dir: service/impl
+        suffix: ServiceImpl.java
+        type: class
+#      controller:
+#      param:
+#      vo:

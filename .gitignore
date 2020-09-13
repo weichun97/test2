@@ -1,0 +1,6 @@
+.idea/
+*.iml
+.mnv/
+generate-test/mvnw.cmd
+generate-test/mvnw
+generate-test/.mvn/
