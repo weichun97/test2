@@ -3,11 +3,11 @@ package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</
 import com.itran.fgoc.common.core.api.Response;
 import com.itran.fgoc.common.mybatisplus.FgocPage;
 import com.itran.fgoc.common.mybatisplus.PageParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}VO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}VO;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>service.${tableInfo.tableNameCamelCase}Service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

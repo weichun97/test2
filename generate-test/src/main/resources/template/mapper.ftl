@@ -2,7 +2,7 @@ package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?uncap_first}.${tableInfo.tableNameCamelCase}PageParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
 import org.apache.ibatis.annotations.Mapper;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.po.${tableInfo.tableNameCamelCase};
 

@@ -1,4 +1,4 @@
-package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>${dir?replace("/", ".")}.${tableInfo.tableName?lower_case};
+package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>${dir?replace("/", ".")}.${tableInfo.tableNameCamelCase?lower_case};
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,7 +13,7 @@ import java.util.Date;
  * @description ${tableInfo.tableComment}
  */
 @Data
-@ApiModel(value = "${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase}Param")
+@ApiModel(value = "${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}Param")
 public class ${tableInfo.tableNameCamelCase}Param implements Serializable{
 
     private static final long serialVersionUID = 1L;

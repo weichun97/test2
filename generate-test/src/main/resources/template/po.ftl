@@ -2,6 +2,7 @@ package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -19,21 +20,28 @@ public class ${tableInfo.tableNameCamelCase} implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     <#if tableInfo.columnDtos?exists && tableInfo.columnDtos?size gt 0>
-    <#assign a=0/>
     <#list tableInfo.columnDtos as columnDTO >
-        <#if a == 0>
+        <#if columnDTO.columnName == 'id'>
     /**
      * ${columnDTO.columnComment}
      */
     @TableId(type = IdType.AUTO)
     private ${columnDTO.javaType} ${columnDTO.columnName};
-            <#else>
+
+        <#elseif columnDTO.columnName == 'isDeleted'>
+    /**
+     * ${columnDTO.columnComment}
+     */
+    @TableLogic(value = "0", delval = "1")
+    private Boolean ${columnDTO.columnName};
+
+        <#else>
     /**
      * ${columnDTO.columnComment}
      */
     private ${columnDTO.javaType} ${columnDTO.columnName};
+
         </#if>
-        <#assign a++/>
     </#list>
     </#if>
 

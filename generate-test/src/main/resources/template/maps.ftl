@@ -1,10 +1,10 @@
 package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>${dir?replace("/", ".")};
 
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.po.${tableInfo.tableNameCamelCase};
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}VO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}VO;
 
 import org.mapstruct.Mapper;
 import java.util.List;
@@ -20,7 +20,7 @@ public interface ${tableInfo.tableNameCamelCase}Maps {
      * param转换po
      *
      * @param param the param
-     * @return ${tableInfo.tableName?lower_case} ${tableInfo.tableName?lower_case}
+     * @return ${tableInfo.tableName?lower_case}
      */
     ${tableInfo.tableNameCamelCase} saveParamToPo(${tableInfo.tableNameCamelCase}SaveParam param);
 
@@ -28,7 +28,7 @@ public interface ${tableInfo.tableNameCamelCase}Maps {
      * param转换po
      *
      * @param param the param
-     * @return ${tableInfo.tableName?lower_case} ${tableInfo.tableName?lower_case}
+     * @return ${tableInfo.tableName?lower_case}
      */
     ${tableInfo.tableNameCamelCase} updateParamToPo(${tableInfo.tableNameCamelCase}UpdateParam param);
 

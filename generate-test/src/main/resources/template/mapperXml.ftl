@@ -3,7 +3,7 @@
 
 <mapper namespace="${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>${dir?replace("/", ".")}.${tableInfo.tableNameCamelCase}Mapper">
 
-    <select id="${tableInfo.tableNameCamelCase?uncap_first}Page" resultType="${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageVO">
+    <select id="${tableInfo.tableNameCamelCase?uncap_first}Page" resultType="${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageVO">
         select
         <#list tableInfo.columnDtos as columnDTO >
             t1.${columnDTO.oldColumnName}<#if columnDTO_has_next>,</#if>

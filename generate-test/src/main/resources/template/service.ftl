@@ -3,12 +3,12 @@ package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.itran.fgoc.common.mybatisplus.FgocPage;
 import com.itran.fgoc.common.mybatisplus.PageParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.po.${tableInfo.tableNameCamelCase};
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}VO;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}VO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
 
 /**
  * @author chun
@@ -39,7 +39,7 @@ public interface ${tableInfo.tableNameCamelCase}Service extends IService<${table
      * @param param
      * @return
      */
-    FgocPage<${tableInfo.tableNameCamelCase}PageVO> ${tableInfo.tableName?lower_case}Page(PageParam page, ${tableInfo.tableNameCamelCase}PageParam param);
+    FgocPage<${tableInfo.tableNameCamelCase}PageVO> ${tableInfo.tableNameCamelCase?uncap_first}Page(PageParam page, ${tableInfo.tableNameCamelCase}PageParam param);
 
     /**
      * 根据id查询
@@ -47,7 +47,7 @@ public interface ${tableInfo.tableNameCamelCase}Service extends IService<${table
      * @param id
      * @return
      */
-    ${tableInfo.tableNameCamelCase}VO ${tableInfo.tableName?lower_case}(Long id);
+    ${tableInfo.tableNameCamelCase}VO ${tableInfo.tableNameCamelCase?uncap_first}(Long id);
 
 
     /**

@@ -16,7 +16,7 @@ chun:
     template-map:
       po:
         template-file: po.ftl
-        dir: entity.po
+        dir: entity/po
         suffix: .java
         type: class
       mapper:
@@ -44,6 +44,46 @@ chun:
         dir: service/impl
         suffix: ServiceImpl.java
         type: class
-#      controller:
-#      param:
-#      vo:
+      controller:
+        template-file: controller.ftl
+        dir: controller
+        suffix: Controller.java
+        type: class
+        child:
+          param:
+            template-file: param.ftl
+            dir: entity/param
+            suffix: Param.java
+            type: class
+            need-table-package: true
+          vo:
+            template-file: vo.ftl
+            dir: entity/vo
+            suffix: VO.java
+            type: class
+            need-table-package: true
+          page-param:
+            template-file: pageParam.ftl
+            dir: entity/param
+            suffix: PageParam.java
+            type: class
+            need-table-package: true
+          page-vo:
+            template-file: pageVO.ftl
+            dir: entity/vo
+            suffix: PageVO.java
+            type: class
+            need-table-package: true
+          save-param:
+            template-file: saveParam.ftl
+            dir: entity/param
+            suffix: SaveParam.java
+            type: class
+            need-table-package: true
+          update-param:
+            template-file: updateParam.ftl
+            dir: entity/param
+            suffix: UpdateParam.java
+            type: class
+            need-table-package: true
+

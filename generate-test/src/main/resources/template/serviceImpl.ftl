@@ -7,13 +7,12 @@ import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.mybatisplus.FgocPage;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.mybatisplus.PageParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.mybatisplus.ems.YesOrNoEnum;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.po.${tableInfo.tableNameCamelCase};
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}sVO;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}VO;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableName?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}VO;
+import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.vo.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageVO;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>mapper.${tableInfo.tableNameCamelCase}Mapper;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>maps.${tableInfo.tableNameCamelCase}Maps;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>service.${tableInfo.tableNameCamelCase}Service;
@@ -36,9 +35,9 @@ public class ${tableInfo.tableNameCamelCase}ServiceImpl extends ServiceImpl<${ta
 
     @Override
     public void save(${tableInfo.tableNameCamelCase}SaveParam param) {
-        ${tableInfo.tableNameCamelCase} ${tableInfo.tableName?lower_case} = maps.paramToPo(param);
-        ${tableInfo.tableName?lower_case}.setCreateTime(new Date());
-        int i = baseMapper.insert(${tableInfo.tableName?lower_case});
+        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?lower_case} = maps.paramToPo(param);
+        ${tableInfo.tableNameCamelCase?lower_case}.setCreateTime(new Date());
+        int i = baseMapper.insert(${tableInfo.tableNameCamelCase?lower_case});
         if (i < 1) {
             throw new ApiException(SqlCode.INSERT_ERROR);
         }
@@ -46,15 +45,15 @@ public class ${tableInfo.tableNameCamelCase}ServiceImpl extends ServiceImpl<${ta
 
     @Override
     public void update(${tableInfo.tableNameCamelCase}UpdateParam param, Long id) {
-        ${tableInfo.tableNameCamelCase} ${tableInfo.tableName?lower_case} = maps.paramToPo(param);
-        ${tableInfo.tableName?lower_case}.setId(id);
-        ${tableInfo.tableName?lower_case}.setUpdateTime(new Date());
-        baseMapper.updateById(${tableInfo.tableName?lower_case});
+        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?lower_case} = maps.paramToPo(param);
+        ${tableInfo.tableNameCamelCase?lower_case}.setId(id);
+        ${tableInfo.tableNameCamelCase?lower_case}.setUpdateTime(new Date());
+        baseMapper.updateById(${tableInfo.tableNameCamelCase?lower_case});
     }
 
     @Override
-    public FgocPage<${tableInfo.tableNameCamelCase}PageVO> ${tableInfo.tableName?lower_case}Page(PageParam page, ${tableInfo.tableNameCamelCase}PageParam param) {
-        FgocPage fgocPage = baseMapper.${tableInfo.tableName?lower_case}Page(FgocPage.getPage(page), param);
+    public FgocPage<${tableInfo.tableNameCamelCase}PageVO> ${tableInfo.tableNameCamelCase?uncap_first}Page(PageParam page, ${tableInfo.tableNameCamelCase}PageParam param) {
+        FgocPage fgocPage = baseMapper.${tableInfo.tableNameCamelCase?uncap_first}Page(FgocPage.getPage(page), param);
         if (!CollectionUtil.isEmpty(fgocPage.getRecords())) {
             fgocPage.setRecords(maps.poToPageVo(fgocPage.getRecords()));
         }
@@ -64,10 +63,10 @@ public class ${tableInfo.tableNameCamelCase}ServiceImpl extends ServiceImpl<${ta
 
     @Nullable
     @Override
-    public ${tableInfo.tableNameCamelCase}VO ${tableInfo.tableName?lower_case}(Long id) {
-        ${tableInfo.tableNameCamelCase} ${tableInfo.tableName?lower_case} = this.getById(id);
-        if (${tableInfo.tableName?lower_case} != null) {
-            return maps.poToVo(${tableInfo.tableName?lower_case});
+    public ${tableInfo.tableNameCamelCase}VO ${tableInfo.tableNameCamelCase?uncap_first}(Long id) {
+        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?uncap_first} = this.getById(id);
+        if (${tableInfo.tableNameCamelCase?uncap_first} != null) {
+            return maps.poToVo(${tableInfo.tableNameCamelCase?uncap_first});
         }
         return null;
     }
