@@ -2,11 +2,10 @@ package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.core.api.SqlCode;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.core.exception.ApiException;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.mybatisplus.FgocPage;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.mybatisplus.PageParam;
-import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>common.mybatisplus.ems.YesOrNoEnum;
+import com.itran.fgoc.common.core.api.SqlCode;
+import com.itran.fgoc.common.core.exception.ApiException;
+import com.itran.fgoc.common.mybatisplus.FgocPage;
+import com.itran.fgoc.common.mybatisplus.PageParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}PageParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}SaveParam;
 import ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>entity.param.${tableInfo.tableNameCamelCase?lower_case}.${tableInfo.tableNameCamelCase}UpdateParam;
@@ -35,7 +34,7 @@ public class ${tableInfo.tableNameCamelCase}ServiceImpl extends ServiceImpl<${ta
 
     @Override
     public void save(${tableInfo.tableNameCamelCase}SaveParam param) {
-        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?lower_case} = maps.paramToPo(param);
+        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?lower_case} = maps.saveParamToPo(param);
         ${tableInfo.tableNameCamelCase?lower_case}.setCreateTime(new Date());
         int i = baseMapper.insert(${tableInfo.tableNameCamelCase?lower_case});
         if (i < 1) {
@@ -45,7 +44,7 @@ public class ${tableInfo.tableNameCamelCase}ServiceImpl extends ServiceImpl<${ta
 
     @Override
     public void update(${tableInfo.tableNameCamelCase}UpdateParam param, Long id) {
-        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?lower_case} = maps.paramToPo(param);
+        ${tableInfo.tableNameCamelCase} ${tableInfo.tableNameCamelCase?lower_case} = maps.updateParamToPo(param);
         ${tableInfo.tableNameCamelCase?lower_case}.setId(id);
         ${tableInfo.tableNameCamelCase?lower_case}.setUpdateTime(new Date());
         baseMapper.updateById(${tableInfo.tableNameCamelCase?lower_case});
@@ -53,12 +52,7 @@ public class ${tableInfo.tableNameCamelCase}ServiceImpl extends ServiceImpl<${ta
 
     @Override
     public FgocPage<${tableInfo.tableNameCamelCase}PageVO> ${tableInfo.tableNameCamelCase?uncap_first}Page(PageParam page, ${tableInfo.tableNameCamelCase}PageParam param) {
-        FgocPage fgocPage = baseMapper.${tableInfo.tableNameCamelCase?uncap_first}Page(FgocPage.getPage(page), param);
-        if (!CollectionUtil.isEmpty(fgocPage.getRecords())) {
-            fgocPage.setRecords(maps.poToPageVo(fgocPage.getRecords()));
-        }
-        return fgocPage;
-
+        return baseMapper.${tableInfo.tableNameCamelCase?uncap_first}Page(FgocPage.getPage(page), param);
     }
 
     @Nullable

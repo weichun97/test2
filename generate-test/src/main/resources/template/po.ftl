@@ -33,7 +33,7 @@ public class ${tableInfo.tableNameCamelCase} implements Serializable {
      * ${columnDTO.columnComment}
      */
     @TableLogic(value = "0", delval = "1")
-    private Boolean ${columnDTO.columnName};
+    private Boolean deleted;
 
         <#else>
     /**
