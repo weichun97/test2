@@ -3,85 +3,130 @@ spring:
     serialization: { WRITE_DATES_AS_TIMESTAMPS: true }
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.115.21.114:3306/fgoc_cnshe_sys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false
-    username: root
-    password: fgoc-cnshe
+#    url: jdbc:mysql://47.115.21.114:3306/fgoc_cnshe_sys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false
+#    username: root
+#    password: fgoc-cnshe
+    url: jdbc:mysql://119.23.8.61:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false
+    username: game
+    password: uu5!^%jg
     type: com.alibaba.druid.pool.DruidDataSource
     validationQuery: SELECT 1
     initial-size: 20
     min-idle: 20
     maxActive: 50
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-not-delete-value: 0
+      logic-delete-value: UNIX_TIMESTAMP()
+
 chun:
   generate:
     template-map:
-      po:
-        template-file: po.ftl
+      onlyPo:
+        template-file: poSimple.ftl
         dir: entity/po
         suffix: .java
         type: class
-      mapper:
-        template-file: mapper.ftl
-        dir: mapper
-        suffix: Mapper.java
-        type: class
-      mapper-xml:
-        template-file: mapperXml.ftl
-        dir: mapper
-        suffix: Mapper.xml
-        type: resource
-      maps:
-        template-file: maps.ftl
-        dir: maps
-        suffix: Maps.java
-        type: class
-      service:
-        template-file: service.ftl
-        dir: service
-        suffix: Service.java
-        type: class
-      serviceImpl:
-        template-file: serviceImpl.ftl
-        dir: service/impl
-        suffix: ServiceImpl.java
-        type: class
-      controller:
-        template-file: controller.ftl
-        dir: controller
-        suffix: Controller.java
+      simple:
+        template-file: poSimple.ftl
+        dir: entity/po
+        suffix: .java
         type: class
         child:
+          mapper:
+            template-file: mapperSimple.ftl
+            dir: mapper
+            suffix: Mapper.java
+            type: class
+          mapper-xml:
+            template-file: mapperXmlSimple.ftl
+            dir: mapper
+            suffix: Mapper.xml
+            type: resource
+          maps:
+            template-file: mapsSimple.ftl
+            dir: maps
+            suffix: Maps.java
+            type: class
+          service:
+            template-file: serviceSimple.ftl
+            dir: service
+            suffix: Service.java
+            type: class
+          serviceImpl:
+            template-file: serviceImplSimple.ftl
+            dir: service/impl
+            suffix: ServiceImpl.java
+            type: class
+      all:
+        template-file: poAll.ftl
+        dir: entity/po
+        suffix: .java
+        type: class
+        child:
+          mapper:
+            template-file: mapperAll.ftl
+            dir: mapper
+            suffix: Mapper.java
+            type: class
+          mapper-xml:
+            template-file: mapperXmlAll.ftl
+            dir: mapper
+            suffix: Mapper.xml
+            type: resource
+          maps:
+            template-file: mapsAll.ftl
+            dir: maps
+            suffix: Maps.java
+            type: class
+          service:
+            template-file: serviceAll.ftl
+            dir: service
+            suffix: Service.java
+            type: class
+          serviceImpl:
+            template-file: serviceImplAll.ftl
+            dir: service/impl
+            suffix: ServiceImpl.java
+            type: class
+          controller:
+            template-file: controllerAll.ftl
+            dir: controller
+            suffix: Controller.java
+            type: class
           param:
-            template-file: param.ftl
+            template-file: paramAll.ftl
             dir: entity/param
             suffix: Param.java
             type: class
             need-table-package: true
           vo:
-            template-file: vo.ftl
+            template-file: voAll.ftl
             dir: entity/vo
             suffix: VO.java
             type: class
             need-table-package: true
           page-param:
-            template-file: pageParam.ftl
+            template-file: pageParamAll.ftl
             dir: entity/param
             suffix: PageParam.java
             type: class
             need-table-package: true
           page-vo:
-            template-file: pageVO.ftl
+            template-file: pageVOAll.ftl
             dir: entity/vo
             suffix: PageVO.java
             type: class
             need-table-package: true
           save-param:
-            template-file: saveParam.ftl
+            template-file: saveParamAll.ftl
             dir: entity/param
             suffix: SaveParam.java
             type: class
             need-table-package: true
           update-param:
-            template-file: updateParam.ftl
+            template-file: updateParamAll.ftl
             dir: entity/param
             suffix: UpdateParam.java
             type: class

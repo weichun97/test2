@@ -1,9 +1,6 @@
 package ${packageName}.<#if module!=null && module?length gt 0>${module?trim}.</#if>${dir?replace("/", ".")};
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -26,19 +23,22 @@ public class ${tableInfo.tableNameCamelCase} implements Serializable {
      * ${columnDTO.columnComment}
      */
     @TableId(type = IdType.AUTO)
+    @TableField(value = "${columnDTO.oldColumnName}")
     private ${columnDTO.javaType} ${columnDTO.columnName};
 
-        <#elseif columnDTO.columnName == 'isDeleted'>
+        <#elseif columnDTO.columnName == 'deleteTime'>
     /**
      * ${columnDTO.columnComment}
      */
-    @TableLogic(value = "0", delval = "1")
-    private Boolean deleted;
+    @TableField(value = "${columnDTO.oldColumnName}")
+    @TableLogic(value = "0", delval = "UNIX_TIMESTAMP()")
+    private Long deleteTime;
 
         <#else>
     /**
      * ${columnDTO.columnComment}
      */
+    @TableField(value = "${columnDTO.oldColumnName}")
     private ${columnDTO.javaType} ${columnDTO.columnName};
 
         </#if>
