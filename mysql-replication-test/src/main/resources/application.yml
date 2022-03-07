@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:replication://192.168.31.200,192.168.31.201,192.168.31.202/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false&allowMasterDownConnections=true&failOverReadOnly=false
+    username: remote
+    password: asAS123456!
+    hikari:
+      connection-timeout: 1000
