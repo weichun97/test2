@@ -1,5 +1,7 @@
 package com.github.weichun97.vavrtest;
 
+import io.vavr.Lazy;
+import io.vavr.control.Either;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import org.hamcrest.Matcher;
@@ -56,6 +58,44 @@ public class Values {
                 .recover(RuntimeException.class, t -> "运行时异常")
                 .getOrElse("报错了");
         assertEquals("运行时异常", str2);
+    }
+
+    @Test
+    public void testLazy(){
+        Lazy<Double> lazy = Lazy.of(Math::random);
+        assertFalse(lazy.isEvaluated()); // = false
+        Double aDouble = lazy.get();
+        assertTrue(lazy.isEvaluated()); // = true
+        assertEquals(aDouble, lazy.get());
+
+        CharSequence chars = Lazy.val(() -> "Yay!", CharSequence.class);
+        assertEquals("Yay!", chars.toString());
+    }
+
+    @Test
+    public void testEither(){
+        Integer str = computeWithEither(9).getOrElse(() -> null);
+        String s = computeWithEither(9).swap().getOrElse("");
+        assertNull(str);
+        assertEquals("Marks not acceptable", s);
+        assertEquals("Marks not acceptable!!!", computeWithEither(9).swap().map(v -> v + "!!!").get());
+
+        assertFalse(computeWithEither(9).contains(90));
+        assertTrue(computeWithEither(90).contains(90));
+    }
+
+    /**
+     * 大于 85 分返回成功，否则返回错误信息
+     *
+     * @param marks
+     * @return
+     */
+    public Either<String, Integer> computeWithEither(Integer marks){
+        if (marks < 85) {
+            return Either.left("Marks not acceptable");
+        } else {
+            return Either.right(marks);
+        }
     }
 
     public String bunchOfWork(){

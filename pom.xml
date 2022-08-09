@@ -23,7 +23,6 @@
 
     <modules>
         <module>generate-test</module>
-        <module>openfeign-test</module>
         <module>vavr-test</module>
     </modules>
 
