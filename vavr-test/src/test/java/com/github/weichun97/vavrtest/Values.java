@@ -175,8 +175,10 @@ public class Values {
         PersonValidator personValidator = new PersonValidator();
         // Valid(Person(John Doe, 30))
         Validation<Seq<String>, Person> valid = personValidator.validatePerson("John Doe", 30);
+        assertTrue(valid.isValid());
         // Invalid(List(Name contains invalid characters: '!4?', Age must be greater than 0))
         Validation<Seq<String>, Person> invalid = personValidator.validatePerson("John? Doe!4", -1);
+        assertFalse(invalid.isValid());
     }
 
     class PersonValidator {
