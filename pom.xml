@@ -20,11 +20,13 @@
         <spring.cloud-version>Greenwich.SR6</spring.cloud-version>
         <vavr.version>0.10.4</vavr.version>
         <streamex.version>0.6.5</streamex.version>
+        <hutool.version>5.7.22</hutool.version>
     </properties>
 
     <modules>
-        <module>generate-test</module>
         <module>vavr-test</module>
+        <module>base-test</module>
+        <module>spring-test</module>
     </modules>
 
     <dependencyManagement>
@@ -65,6 +67,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+
+            <!-- druid -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
 
             <!-- vavr -->

@@ -1,12 +1,12 @@
 package com.github.weichun97.vavrtest;
 
+import one.util.streamex.DoubleStreamEx;
+import one.util.streamex.EntryStream;
+import one.util.streamex.IntStreamEx;
 import one.util.streamex.StreamEx;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -43,6 +43,46 @@ public class StreamExTest {
         for (String line : StreamEx.of(users3).map(User::getName).nonNull()) {
             System.out.println(line);
         }
+
+        short[] src = {1,2,3};
+        char[] output = IntStreamEx.of(src)
+                .map(x -> x * 5)
+                .toCharArray();
+
+        double[] diffBetweenPairs = getDiffBetweenPairs(1, 2, 3, 5);
+
+        Map<String, Role> nameToRole = new HashMap<>();
+        nameToRole.put("first", new Role());
+        nameToRole.put("second", null);
+        Set<String> nonNullRoles = StreamEx.ofKeys(nameToRole, Objects::nonNull)
+                .toSet();
+
+
+        Map<User, List<Role>> users2roles = transformMap(StreamEx.of(io.vavr.collection.List.of(new User(1, "张三"),
+                new User(2, "张三"),
+                new User(3, "张三")
+        ).toJavaList()).groupingBy(User::getRole));
+
+        Map<Integer, String> mapToString = EntryStream.of(users2roles)
+                .mapKeys(User::getId)
+                .mapValues(String::valueOf)
+                .toMap();
+
+    }
+
+    public Map<User, List<Role>> transformMap(
+            Map<Role, List<User>> role2users) {
+        Map<User, List<Role>> users2roles = EntryStream.of(role2users)
+                .flatMapValues(List::stream)
+                .invert()
+                .grouping();
+        return users2roles;
+    }
+
+    public double[] getDiffBetweenPairs(double... numbers) {
+        return DoubleStreamEx.of(numbers)
+                .pairMap((a, b) -> b - a)
+                .toArray();
     }
 
     public static class User {
