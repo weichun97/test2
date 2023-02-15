@@ -11,20 +11,33 @@ public class Test {
 
 
 
-    @org.junit.Test
-    public void test(){
-        Either<Integer, String> either = Either.left(1);
-        if(either.isLeft()){
-            Integer integer = either.swap().get();
-            System.out.println(integer);
+    private String name = "123";
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void out(){
+        System.out.println(this.name);
+    }
+
+    public static class Test2 extends Test{
+        private String name;
+        public Test2(String name) {
+            this.name = name;
+        }
+        public void setName(String name){
+            this.name = name;
         }
     }
 
-    private String run1(String a){
-        return a + "-后缀";
+    public static void main(String[] args) {
+        Test2 test2 = new Test2("456");
+        test2.out();
     }
 
-    private void run2(String a){
-        System.out.println(123);
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
