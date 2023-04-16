@@ -27,6 +27,9 @@
         <module>vavr-test</module>
         <module>base-test</module>
         <module>spring-test</module>
+        <module>canal-client-test</module>
+        <module>edi-test</module>
+        <module>netty-test</module>
     </modules>
 
     <dependencyManagement>
