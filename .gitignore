@@ -4,3 +4,5 @@
 generate-test/mvnw.cmd
 generate-test/mvnw
 generate-test/.mvn/
+**/target
+*.log
