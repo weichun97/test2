@@ -27,6 +27,9 @@
         <module>vavr-test</module>
         <module>base-test</module>
         <module>spring-test</module>
+        <module>canal-client-test</module>
+        <module>zookeeper-test</module>
+        <module>zookeeper-test</module>
     </modules>
 
     <dependencyManagement>
